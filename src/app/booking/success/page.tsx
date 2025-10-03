@@ -8,7 +8,6 @@ import { Badge } from "@/components/ui/badge";
 import {
   CheckCircle,
   Calendar,
-  Clock,
   Hospital,
   User,
   MapPin,
@@ -17,6 +16,22 @@ import {
   Share2,
 } from "lucide-react";
 import QRCode from "react-qr-code";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
+
+// Types (for TypeScript, can be removed if not needed)
+interface BookingData {
+  hospitalName: string;
+  serviceName: string;
+  patientName: string;
+  date: string;
+  time: string;
+  location: string;
+  bookingId: string;
+  originalPrice: number;
+  discountedPrice: number;
+  savings: number;
+}
 
 const SuccessPage = () => {
   // Generate a random booking ID
@@ -27,6 +42,75 @@ const SuccessPage = () => {
       result += chars.charAt(Math.floor(Math.random() * chars.length));
     }
     return result;
+  };
+
+  // Simple PDF Download functionality (RECOMMENDED)
+  // Uses browser's built-in print to PDF - works perfectly with Tailwind CSS
+  const handleDownloadPDF = async () => {
+    try {
+      window.print();
+    } catch (error) {
+      console.error("Error opening print dialog:", error);
+      alert("Failed to open print dialog. Please try again.");
+    }
+  };
+
+  // Alternative PDF generation using jsPDF + html2canvas (if needed)
+  // More complex but gives you full control over PDF generation
+  const handleAdvancedPDF = async () => {
+    try {
+      const cardElement = document.querySelector(
+        "[data-pdf-card]"
+      ) as HTMLElement;
+      if (!cardElement) {
+        throw new Error("Card element not found");
+      }
+
+      // Capture the card as canvas
+      const canvas = await html2canvas(cardElement, {
+        scale: 2,
+        useCORS: true,
+        allowTaint: false,
+        backgroundColor: "#ffffff",
+      });
+
+      const imgData = canvas.toDataURL("image/png");
+
+      // Create PDF
+      const pdf = new jsPDF({
+        orientation: "portrait",
+        unit: "mm",
+        format: "a4",
+      });
+
+      // Calculate dimensions
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = pdf.internal.pageSize.getHeight();
+      const imgWidth = pdfWidth - 20;
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+      // Center the image
+      const xOffset = (pdfWidth - imgWidth) / 2;
+      const yOffset = 30;
+
+      // Add image to PDF
+      pdf.addImage(imgData, "PNG", xOffset, yOffset, imgWidth, imgHeight);
+
+      // Add footer
+      pdf.setFontSize(10);
+      pdf.text(
+        `Generated on ${new Date().toLocaleDateString()} | Maven Health Platform`,
+        pdfWidth / 2,
+        pdfHeight - 10,
+        { align: "center" }
+      );
+
+      // Download
+      pdf.save(`appointment-pass-${bookingData.bookingId}.pdf`);
+    } catch (error) {
+      console.error("Error generating PDF:", error);
+      alert("Failed to generate PDF. Please try again.");
+    }
   };
 
   // Mock booking data (in a real app, this would come from props/state)
@@ -60,8 +144,8 @@ const SuccessPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 py-8">
-      <div className="container mx-auto px-4 max-w-md">
+    <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 py-8 print:bg-white print:p-0">
+      <div className="container mx-auto px-4 max-w-md print:max-w-none print:p-8">
         {/* Success Header */}
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-3 mb-4">
@@ -78,7 +162,10 @@ const SuccessPage = () => {
         </div>
 
         {/* Virtual Pass/Card */}
-        <Card className="mb-8 shadow-lg border-2 border-green-200 bg-white">
+        <Card
+          data-pdf-card
+          className="mb-8 shadow-lg border-2 border-green-200 bg-white print:shadow-none print:border print:border-gray-300"
+        >
           <CardContent className="p-6">
             {/* Header */}
             <div className="text-center mb-6">
@@ -223,15 +310,35 @@ const SuccessPage = () => {
                   reception when you arrive for your appointment.
                 </p>
               </div>
+              <div className="p-3 bg-green-50 border border-green-200 rounded-lg print:hidden">
+                <p className="text-sm text-green-800 text-center">
+                  <strong>💡 Tip:</strong> Use &ldquo;Save as PDF&rdquo; in the
+                  print dialog for the best quality output.
+                </p>
+              </div>
             </div>
           </CardContent>
         </Card>
 
         {/* Action Buttons */}
         <div className="space-y-3">
-          <Button className="w-full bg-blue-600 hover:bg-blue-700" size="lg">
+          <Button
+            className="w-full bg-blue-600 hover:bg-blue-700"
+            size="lg"
+            onClick={handleDownloadPDF}
+          >
             <Download className="w-4 h-4 mr-2" />
-            Download Pass (PDF)
+            Save as PDF (Print)
+          </Button>
+
+          <Button
+            variant="outline"
+            className="w-full"
+            size="lg"
+            onClick={handleAdvancedPDF}
+          >
+            <Download className="w-4 h-4 mr-2" />
+            Advanced PDF
           </Button>
 
           <Button variant="outline" className="w-full" size="lg">

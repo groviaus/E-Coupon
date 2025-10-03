@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { CheckCircle, Calendar, Clock, Hospital, User } from "lucide-react";
+import { CheckCircle, Calendar, Hospital, User } from "lucide-react";
 
 const ConfirmationPage = () => {
   const router = useRouter();

@@ -26,8 +26,7 @@ const getHospitalData = (id: string) => {
     "1": {
       id: "1",
       name: "King Faisal Specialist Hospital & Research Centre",
-      imageUrl:
-        "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=400&fit=crop&auto=format",
+      imageUrl: "/images/faisal.webp",
       address: "Al Mathar Ash Shamali, Riyadh 11211, Saudi Arabia",
       phone: "+966 11 442 7777",
       rating: 4.8,
@@ -64,8 +63,7 @@ const getHospitalData = (id: string) => {
     "2": {
       id: "2",
       name: "King Abdulaziz Medical City",
-      imageUrl:
-        "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=800&h=400&fit=crop&auto=format",
+      imageUrl: "/images/abdulaziz.webp",
       address: "King Abdulaziz Medical City, Riyadh 11426, Saudi Arabia",
       phone: "+966 11 801 1111",
       rating: 4.7,
@@ -102,8 +100,7 @@ const getHospitalData = (id: string) => {
     "3": {
       id: "3",
       name: "King Fahd Medical City",
-      imageUrl:
-        "https://images.unsplash.com/photo-1581056771107-24ca5f033842?w=800&h=400&fit=crop&auto=format",
+      imageUrl: "/images/fahad.webp",
       address: "King Fahd Medical City, Riyadh 11564, Saudi Arabia",
       phone: "+966 11 288 9999",
       rating: 4.6,
@@ -132,8 +129,7 @@ const getHospitalData = (id: string) => {
     "4": {
       id: "4",
       name: "King Abdullah Medical Complex",
-      imageUrl:
-        "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=800&h=400&fit=crop&auto=format",
+      imageUrl: "/images/abdullah.jpg",
       address: "King Abdullah Medical Complex, Jeddah 21423, Saudi Arabia",
       phone: "+966 12 640 1000",
       rating: 4.9,
@@ -170,8 +166,7 @@ const getHospitalData = (id: string) => {
     "5": {
       id: "5",
       name: "Dr. Sulaiman Al Habib Hospital",
-      imageUrl:
-        "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800&h=400&fit=crop&auto=format",
+      imageUrl: "/images/sulaiman.jpg",
       address: "Dr. Sulaiman Al Habib Hospital, Dubai Healthcare City, UAE",
       phone: "+971 4 429 7777",
       rating: 4.5,
@@ -208,8 +203,7 @@ const getHospitalData = (id: string) => {
     "6": {
       id: "6",
       name: "Al Noor Specialist Hospital",
-      imageUrl:
-        "https://images.unsplash.com/photo-1581056771107-24ca5f033842?w=800&h=400&fit=crop&auto=format",
+      imageUrl: "/images/al_noor.webp",
       address: "Al Noor Specialist Hospital, Mecca 24231, Saudi Arabia",
       phone: "+966 12 542 2222",
       rating: 4.4,

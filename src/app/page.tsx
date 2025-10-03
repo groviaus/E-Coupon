@@ -7,8 +7,7 @@ const Home = () => {
     {
       id: "1",
       name: "King Faisal Specialist Hospital & Research Centre",
-      imageUrl:
-        "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=300&fit=crop&auto=format",
+      imageUrl: "/images/faisal.webp",
       discountTag: "Up to 30% Off",
       location: "Riyadh, Saudi Arabia",
       rating: 4.8,
@@ -24,8 +23,7 @@ const Home = () => {
     {
       id: "2",
       name: "King Abdulaziz Medical City",
-      imageUrl:
-        "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=400&h=300&fit=crop&auto=format",
+      imageUrl: "/images/abdulaziz.webp",
       discountTag: "Up to 25% Off",
       location: "Riyadh, Saudi Arabia",
       rating: 4.7,
@@ -41,8 +39,7 @@ const Home = () => {
     {
       id: "3",
       name: "King Fahd Medical City",
-      imageUrl:
-        "https://images.unsplash.com/photo-1581056771107-24ca5f033842?w=400&h=300&fit=crop&auto=format",
+      imageUrl: "/images/fahad.webp",
       discountTag: "Up to 20% Off",
       location: "Riyadh, Saudi Arabia",
       rating: 4.6,
@@ -58,8 +55,7 @@ const Home = () => {
     {
       id: "4",
       name: "King Abdullah Medical Complex",
-      imageUrl:
-        "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=400&h=300&fit=crop&auto=format",
+      imageUrl: "/images/abdullah.jpg",
       discountTag: "Up to 35% Off",
       location: "Jeddah, Saudi Arabia",
       rating: 4.9,
@@ -74,8 +70,7 @@ const Home = () => {
     {
       id: "5",
       name: "Dr. Sulaiman Al Habib Hospital",
-      imageUrl:
-        "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=400&h=300&fit=crop&auto=format",
+      imageUrl: "/images/sulaiman.jpg",
       discountTag: "Up to 15% Off",
       location: "Dubai, UAE",
       rating: 4.5,
@@ -90,8 +85,7 @@ const Home = () => {
     {
       id: "6",
       name: "Al Noor Specialist Hospital",
-      imageUrl:
-        "https://images.unsplash.com/photo-1581056771107-24ca5f033842?w=400&h=300&fit=crop&auto=format",
+      imageUrl: "/images/al_noor.webp",
       discountTag: "Up to 40% Off",
       location: "Mecca, Saudi Arabia",
       rating: 4.4,

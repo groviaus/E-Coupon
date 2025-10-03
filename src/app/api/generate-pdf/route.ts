@@ -1,6 +1,20 @@
 import { NextRequest, NextResponse } from "next/server";
 import puppeteer from "puppeteer";
 
+// Types
+interface BookingData {
+  hospitalName: string;
+  serviceName: string;
+  patientName: string;
+  date: string;
+  time: string;
+  location: string;
+  bookingId: string;
+  originalPrice: number;
+  discountedPrice: number;
+  savings: number;
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
@@ -58,7 +72,7 @@ export async function POST(request: NextRequest) {
     await browser.close();
 
     // Return PDF as response
-    return new NextResponse(pdfBuffer, {
+    return new NextResponse(Buffer.from(pdfBuffer), {
       status: 200,
       headers: {
         "Content-Type": "application/pdf",
@@ -75,7 +89,7 @@ export async function POST(request: NextRequest) {
 }
 
 // HTML template function
-function generateAppointmentPassHTML(bookingData: any) {
+function generateAppointmentPassHTML(bookingData: BookingData) {
   return `
     <!DOCTYPE html>
     <html lang="en">

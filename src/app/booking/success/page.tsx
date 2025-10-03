@@ -19,19 +19,7 @@ import QRCode from "react-qr-code";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
-// Types (for TypeScript, can be removed if not needed)
-interface BookingData {
-  hospitalName: string;
-  serviceName: string;
-  patientName: string;
-  date: string;
-  time: string;
-  location: string;
-  bookingId: string;
-  originalPrice: number;
-  discountedPrice: number;
-  savings: number;
-}
+// Booking data type (defined in API route)
 
 const SuccessPage = () => {
   // Generate a random booking ID
